@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Produtos{% endblock %}
+
+{% block main %}
+    <div class="row justify-content-end mr-1">
+        <p>Olá {{ user.username }}<a href="{% url 'logout' %}" class="badge badge-dark ml-1">Sair</a></p>
+    </div>
+    <h3 class="text-center">Listagem de Produtos</h3>
+    <div class="row">
+            <ul class="list-group max_width">
+                {% for product in products%}
+                
+                    <li class="list-group-item list-group-item-action">
+                        <a href="{% url 'products_delete' product.id %}" class="btn trash-item">
+                            <i class='fas fa-trash-alt'></i>
+                        </a>
+                        <img src="/media/{{ product.picture }}" alt="image" class="thumbs rounded-circle">
+                        <a href="{% url 'products_update' product.id %}" class="btn btn-link">{{ product }}</a> 
+                    </li>
+                
+                {% endfor %}
+            </ul>
+            <br>
+            
+    </div>
+    <div class="row mt-3 ml-1">
+        <a href="{% url 'products_new' %}" class="btn btn-primary">Adicionar</a>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted text-center">Desenvolvimento web com Django 3.0</span>
+        </div>
+    </footer>
+{% endblock %}

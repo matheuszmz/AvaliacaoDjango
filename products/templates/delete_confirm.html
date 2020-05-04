@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirma?{% endblock %}
+
+{% block main %}
+    <div class="row justify-content-center">
+        <h1 class="text-center">Tem certeza que deseja deletar?</h1>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <img src="/media/{{ product.picture }}" alt="image" class=" thumbs rounded-circle">
+        <p class="text-capitalize ml-2">{{ product }}</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <a href="{% url 'products_list' %}" class="btn btn-success mr-3 mt-3">Desistir</a>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger mt-3">Confirmar</button>
+        </form>
+    </div>
+{% endblock %}

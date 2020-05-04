@@ -1,0 +1,13 @@
+.trash-item {
+    float: right;
+    color: red;
+}
+
+.thumbs {
+    width: 100px;
+    height: 100px;
+}
+
+.max_width {
+    width: 100%;
+}
