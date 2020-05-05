@@ -2,28 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-class Brand(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return '{}'.format(self.name)
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return '{}'.format(self.name)
-
-
-class Unit(models.Model):
-    unit = models.CharField(max_length=10)
-    description = models.CharField(max_length=30)
-
-    def __str__(self):
-        return '{} - {}'.format(self.unit, self.description)
-
-
 class Products(models.Model):
     name = models.CharField(max_length=50)
     cost_price = models.DecimalField(max_digits=9, decimal_places=2)
@@ -51,9 +29,9 @@ class Products(models.Model):
     )
 
     ncm_nfe = models.IntegerField(null=True, blank=True)
-    unit = models.ForeignKey(Unit, on_delete=models.PROTECT)
-    brand = models.ForeignKey(Brand, on_delete=models.PROTECT)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    unit = models.CharField(max_length=20, default='UNIDADE')
+    brand = models.CharField(max_length=30)
+    category = models.CharField(max_length=30, default='ALIMENTÍCIOS')
     
     ORIGIN_CHOICES = [
         ('NAC', 'Nacional'),
